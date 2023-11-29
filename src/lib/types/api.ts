@@ -1,4 +1,4 @@
-import { Movie } from "./movie";
+import { NowPlaying } from "./movie";
 
 export interface Response {
   dates: {
@@ -6,7 +6,7 @@ export interface Response {
     minimum: string;
   };
   page: number;
-  results: Movie[];
+  results: NowPlaying[];
   total_pages: number;
   total_results: number;
 }

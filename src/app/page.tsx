@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+import type { Metadata } from "next";
 
 import MovieCard from "@/components/movie-card";
 
@@ -12,6 +13,11 @@ async function getData() {
 
   return result.data as Response;
 }
+
+export const metadata: Metadata = {
+  title: "CineCrib",
+  description: "Welcome to CineCrib",
+};
 
 async function Page() {
   const datas = await getData();
