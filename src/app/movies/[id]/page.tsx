@@ -1,27 +1,18 @@
 import Image from "next/image";
 import React from "react";
-import axios from "axios";
 import type { Metadata } from "next";
 
-import { MovieDetail } from "@/lib/types/movie";
+import { getDetailMovie } from "@/lib/apis/movie";
 import { Badge } from "@/components/ui/badge";
 
 type Props = {
   params: { id: string };
 };
 
-async function getData(id: string) {
-  const result = await axios.get(
-    `https://api.themoviedb.org/3/movie/${id}}?api_key=0e6ab6977a441feefe861571f011429c&language=en-US`
-  );
-
-  return result.data as MovieDetail;
-}
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const id = params.id;
 
-  const movie = await getData(id);
+  const movie = await getDetailMovie(id);
 
   return {
     title: movie.title + " | CineCrib",
@@ -29,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 async function Page({ params }: { params: { id: string } }) {
-  const movie = await getData(params.id);
+  const movie = await getDetailMovie(params.id);
 
   return (
     <div
@@ -48,7 +39,7 @@ async function Page({ params }: { params: { id: string } }) {
         />
         <div className="flex flex-col gap-2">
           <p className="text-2xl font-bold">{movie.title}</p>
-          <div className="flex gap-2">
+          <div className="flex gap-2 w-full flex-wrap">
             {movie.genres.map((genre) => (
               <Badge key={genre.id}>{genre.name}</Badge>
             ))}

@@ -38,11 +38,15 @@ const Navbar = () => {
             <DropdownMenuContent>
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>My Favorite</DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link href="/favorites">My Favorite</Link>
+              </DropdownMenuItem>
               <DropdownMenuItem onClick={() => handleTheme()}>
                 Change Theme
               </DropdownMenuItem>
-              <DropdownMenuItem>Login</DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/login">Login</Link>
+              </DropdownMenuItem>
               <DropdownMenuItem>Logout</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

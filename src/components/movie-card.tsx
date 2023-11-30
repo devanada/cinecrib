@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-import { Movie } from "@/lib/types/movie";
+import { Movie } from "@/lib/apis/movie";
 
 interface Props {
   data: Movie;

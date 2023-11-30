@@ -1,4 +1,4 @@
-import { NowPlaying } from "./movie";
+import { NowPlaying } from "@/lib/apis/movie";
 
 export interface Response {
   dates: {
